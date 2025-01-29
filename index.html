@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ball Shooter Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div class="game-info">
+            <span id="level">Level: 1</span>
+            <span id="balls">Balls: 1</span>
+            <button id="speedUp" class="speed-button">2x Speed</button>
+        </div>
+        <div id="gameOver" class="game-over" style="display: none;">
+            <div class="game-over-content">
+                <h2>Game Over</h2>
+                <p>You reached Level <span id="finalLevel">0</span></p>
+                <button id="restartGame" class="restart-button">Play Again</button>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
