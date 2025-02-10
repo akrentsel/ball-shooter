@@ -21,11 +21,15 @@ class Game {
                 this.isSpeedUp = true;
                 this.balls.forEach(ball => {
                     const currentSpeed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
-                    const speedMultiplier = (this.normalSpeed * 2) / currentSpeed;
+                    const speedMultiplier = 2; // Changed to always multiply by 2
                     ball.vx *= speedMultiplier;
                     ball.vy *= speedMultiplier;
                 });
-                this.ballSpeed = this.normalSpeed * 2;
+                this.ballSpeed *= 2; // Also multiply the ballSpeed by 2
+                
+                // Update the button text to show current multiplier
+                const currentMultiplier = this.ballSpeed / this.normalSpeed;
+                speedUpBtn.textContent = `${currentMultiplier}x Speed`;
             }
         });
         
@@ -176,6 +180,7 @@ class Game {
             
             const angle = Math.atan2(clickY - this.fixedBallPos.y, clickX - this.fixedBallPos.x);
             this.launchAngle = angle;
+            
             this.isPlaying = true;
             this.ballsInPlay = 0;
             this.lastBallLaunchTime = 0;
@@ -326,6 +331,10 @@ class Game {
                 this.fixedBallPos.x = this.nextRoundStartX;
                 this.nextRoundStartX = null;
             }
+            
+            // Reset speed button text and speed
+            document.getElementById('speedUp').textContent = '2x Speed';
+            this.ballSpeed = this.normalSpeed;
             
             this.addNewTileRow();
             this.updateUI();
